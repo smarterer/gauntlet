@@ -1,8 +1,19 @@
 {% extends 'base.html' %}
-{% block title %}It works!{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
-<h1>It works!</h1>
+<h1>The Smarterer Gauntlet</h1>
+
+<p>
+  An demo app for <a href="http://smarterer.com/apidoc">the Smarterer API</a>.
+  <a href="http://github.com/smarterer/gauntlet">Source Code on Github</a>.
+</p>
+
+<ul>
+  <li><a href="{% url smarterer_auth-authorize %}">authorize via smarterer</a></li>
+</ul>
+
+{% comment %}
 <p>
 Your Django-nonrel installation is working fine.
 Now go and build something useful with it. :)
@@ -39,4 +50,8 @@ If you search for reusable apps that work with Django-nonrel here's a list to ge
 <p>
 Finally, take a look at the apps listed on <a href="http://djangopackages.com/">Django Packages</a>. Many simple Django apps (e.g., <a href="https://bitbucket.org/ubernostrum/django-registration">django-registration</a>) should work unmodified. If you want to use <a href="http://robhudson.github.com/django-debug-toolbar/">django-debug-toolbar</a> you need to disable the SQLDebugPanel in your settings.
 </p>
+
+{% endcomment %}
+
+
 {% endblock %}
