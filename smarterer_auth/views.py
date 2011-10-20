@@ -9,6 +9,8 @@ from django.utils import simplejson
 import urllib
 from google.appengine.api.urlfetch import fetch
 
+from smarterer_api import Smarterer
+
 
 def authorize(request):
     # https://smarterer.com/oauth/authorize
@@ -74,4 +76,27 @@ def callback(request):
                                     "from OAuth provider. Response was: %r" % (
                                         response_dict))
 
-    return HttpResponse("OK! " + repr(response_dict))
+    request.session["smarterer_access_token"] = response_dict["access_token"]
+
+    return HttpResponseRedirect(reverse("smarterer_auth-my_profile"))
+
+
+def requires_smarterer_login(view_func):
+    def replacement(request, *args, **kwargs):
+        if "smarterer_access_token" not in request.session:
+            return HttpResponseRedirect(reverse('smarterer_auth-authorize'))
+        return view_func(request, *args, **kwargs)
+
+    replacement.__name__ = view_func.__name__
+    replacement.__doc__ = view_func.__doc__
+    return replacement
+
+
+@requires_smarterer_login
+def my_profile(request):
+    api = Smarterer(access_token=request.session["smarterer_access_token"])
+    badge_info = api.badges()
+
+    return render(request, "profile.html", dict(
+        username=badge_info["username"],
+        badges=badge_info["badges"]))

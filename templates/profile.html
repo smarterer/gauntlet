@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Profile for {{username}}{% endblock %}
+
+{% block content %}
+<h1>Profile for {{username}}</h1>
+
+<h2>You have {{badges|length}} badge{{badges|length|pluralize}}</h2>
+
+<table border="0">
+{% for b in badges %}
+<tr>
+  <td>
+    <img src="{{b.badge.image}}" align="right"/>
+  </td>
+  <td>
+    {{b.badge.score}} on 
+    <a href="http://smarterer.com/test/{{b.quiz.url_slug}}">
+      {{b.quiz.name}}
+    </a>
+  </td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -53,8 +53,6 @@ ROOT_URLCONF = 'urls'
 SMARTERER_OAUTH_URL_BASE = "https://smarterer.com/oauth/"
 SMARTERER_OAUTH_URL_AUTHORIZE = SMARTERER_OAUTH_URL_BASE + "authorize"
 SMARTERER_OAUTH_URL_ACCESS_TOKEN = SMARTERER_OAUTH_URL_BASE + "access_token"
-SMARTERER_API_URL_BASE = "https://smarterer.com/api/"
-
 
 try:
     from local_settings import *

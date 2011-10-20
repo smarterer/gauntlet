@@ -15,6 +15,16 @@
     {% endblock %}
 
     {% block extra-head %}{% endblock %}
+
+    <style type="text/css">
+      body { font-family: 'Helvetica Neue', Arial, sans-serif; 
+             background: #fffff8; color: black; }
+      a { color: blue; }
+      a:visited { color: purple; }
+      #header { border-bottom: 1px solid #ddd; }
+      #header a, #header a:visited  { color: blue; text-decoration: none; }
+      #header a:hover  { text-decoration: underline; }
+    </style>
   </head>
 
   <body>
@@ -44,7 +54,6 @@
     </div>
 
     <div id="footer">
-      <p>Powered by <a href="http://www.allbuttonspressed.com/projects/django-nonrel">Django-nonrel</a></p>
     </div>
 
     {% block js %}
