@@ -5,3 +5,4 @@ dbindexer
 django
 djangotoolbox
 
+local_settings.py
